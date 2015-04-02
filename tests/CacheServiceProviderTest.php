@@ -56,7 +56,7 @@ class CacheServiceProviderTest extends \PHPUnit_Framework_TestCase
 
         $app['config'] = [
             'cache' => [
-                'adapter'            => 'Memcache',
+                'adapter'            => 'ArrayCache',
                 'host'               => '127.0.0',
                 'port'               => 11211,
                 'connectable'        => false
