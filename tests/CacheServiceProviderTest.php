@@ -42,8 +42,8 @@ class CacheServiceProviderTest extends \PHPUnit_Framework_TestCase
                 'adapter'       => 'CrazyMemcache',
                 'host'          => '127.0.0.1',
                 'port'          => 11211,
-                'connectable'   => false
-            ]
+                'connectable'   => false,
+            ],
         ];
 
         $app->register(new CacheServiceProvider());
@@ -59,8 +59,8 @@ class CacheServiceProviderTest extends \PHPUnit_Framework_TestCase
                 'adapter'            => 'Array',
                 'host'               => '127.0.0',
                 'port'               => 11211,
-                'connectable'        => false
-            ]
+                'connectable'        => false,
+            ],
         ];
 
         $app->register(new CacheServiceProvider());

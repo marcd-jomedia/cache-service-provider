@@ -16,26 +16,26 @@ class CacheServiceProvider  implements ServiceProviderInterface
 
     public function register(Application $app)
     {
-        $app[$this->prefix] = $app->share(function () use ($app){
+        $app[$this->prefix] = $app->share(
+            function () use ($app) {
 
-            if (!isset($app['config']['cache'])) {
+                if (!isset($app['config']['cache'])) {
+                    throw new InvalidCacheConfigException('Cache Config Not Defined');
+                }
 
-                throw new InvalidCacheConfigException('Cache Config NOt Defined');
+                $cacheSettings = $app['config']['cache'];
+                $cacheClassName = sprintf('\Doctrine\Common\Cache\%sCache', $cacheSettings['adapter']);
+
+                if (!class_exists($cacheClassName)) {
+                    throw new InvalidCacheConfigException('Cache Adapter Not Supported!');
+                }
+
+                $cacheAdapter = new $cacheClassName();
+                $this->addConnection($cacheAdapter, $cacheSettings);
+
+                return $cacheAdapter;
             }
-
-            $cacheSettings = $app['config']['cache'];
-            $cacheClassName = sprintf('\Doctrine\Common\Cache\%sCache', $cacheSettings['adapter']);
-
-            if (!class_exists($cacheClassName)) {
-
-                throw new InvalidCacheConfigException('Cache Adapter Not Supported!');
-            }
-
-            $cacheAdapter = new $cacheClassName();
-            $this->addConnection($cacheAdapter, $cacheSettings);
-
-            return $cacheAdapter;
-        });
+        );
     }
 
     /**
@@ -45,7 +45,6 @@ class CacheServiceProvider  implements ServiceProviderInterface
     private function addConnection(CacheProvider $cacheAdapter, array $cacheSettings)
     {
         if ($cacheSettings['connectable'] === true) {
-
             $connectionClass = sprintf('\%s', $cacheSettings['adapter']);
             $connection = new $connectionClass();
 
@@ -56,9 +55,6 @@ class CacheServiceProvider  implements ServiceProviderInterface
             $setMethod = sprintf('set%s', $cacheSettings['adapter']);
             $cacheAdapter->$setMethod($connection);
         }
-
-
-
     }
 
     public function boot(Application $app)
