@@ -7,7 +7,7 @@ use Doctrine\Common\Cache\CacheProvider;
 use Silex\ServiceProviderInterface;
 use Silex\Application;
 
-class CacheServiceProvider  implements ServiceProviderInterface
+class CacheServiceProvider implements ServiceProviderInterface
 {
     /**
      * @var string
