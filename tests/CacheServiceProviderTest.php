@@ -50,13 +50,13 @@ class CacheServiceProviderTest extends \PHPUnit_Framework_TestCase
         $cacheAdapter = $app['cache'];
     }
 
-    public function testShouldRegister()
+    public function testShouldRegisterArrayCache()
     {
         $app = new Application();
 
         $app['config'] = [
             'cache' => [
-                'adapter'            => 'ArrayCache',
+                'adapter'            => 'Array',
                 'host'               => '127.0.0',
                 'port'               => 11211,
                 'connectable'        => false
