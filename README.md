@@ -16,6 +16,7 @@ A [Silex](https://github.com/silexphp/Silex) Service Provider for [Solarium](htt
 ## Usage
 
 ```php
+
 use Silex\Application;
 use Dafiti\Silex\CacheServiceProvider;
 
@@ -35,6 +36,7 @@ $app['cache']->save('your-key', 'your-data');
 $data = $app['cache']->fetch('your-key');
 
 echo $data; // your-data
+
 ```
 
 ## License
