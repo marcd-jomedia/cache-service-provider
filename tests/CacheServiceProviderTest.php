@@ -39,10 +39,10 @@ class CacheServiceProviderTest extends \PHPUnit_Framework_TestCase
 
         $app['config'] = [
             'cache' => [
-                'adapter'       => 'CrazyMemcache',
-                'host'          => '127.0.0.1',
-                'port'          => 11211,
-                'connectable'   => false,
+                'adapter'     => 'CrazyMemcache',
+                'host'        => '127.0.0.1',
+                'port'        => 11211,
+                'connectable' => false,
             ],
         ];
 
@@ -56,10 +56,10 @@ class CacheServiceProviderTest extends \PHPUnit_Framework_TestCase
 
         $app['config'] = [
             'cache' => [
-                'adapter'            => 'Array',
-                'host'               => '127.0.0',
-                'port'               => 11211,
-                'connectable'        => false,
+                'adapter'     => 'Array',
+                'host'        => '127.0.0',
+                'port'        => 11211,
+                'connectable' => false,
             ],
         ];
 

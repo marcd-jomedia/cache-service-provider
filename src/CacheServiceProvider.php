@@ -44,17 +44,19 @@ class CacheServiceProvider implements ServiceProviderInterface
      */
     private function addConnection(CacheProvider $cacheAdapter, array $cacheSettings)
     {
-        if ($cacheSettings['connectable'] === true) {
-            $connectionClass = sprintf('\%s', $cacheSettings['adapter']);
-            $connection = new $connectionClass();
-
-            $host = $cacheSettings['host'];
-            $port = $cacheSettings['port'];
-            $connection->connect($host, $port);
-
-            $setMethod = sprintf('set%s', $cacheSettings['adapter']);
-            $cacheAdapter->$setMethod($connection);
+        if ($cacheSettings['connectable'] === false) {
+            return;
         }
+
+        $connectionClass = sprintf('\%s', $cacheSettings['adapter']);
+        $connection = new $connectionClass();
+
+        $host = $cacheSettings['host'];
+        $port = $cacheSettings['port'];
+        $connection->connect($host, $port);
+
+        $setMethod = sprintf('set%s', $cacheSettings['adapter']);
+        $cacheAdapter->$setMethod($connection);
     }
 
     public function boot(Application $app)

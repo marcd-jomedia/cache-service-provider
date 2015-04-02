@@ -5,9 +5,15 @@ php:
     - 5.6
     - 7.0
     - hhvm
+services:
+  - memcached
+  - redis
 
 install:
+    - echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+    - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
     - composer install --dev --no-interaction --prefer-source
+
 
 script:
     - vendor/bin/php-cs-fixer fix -v --dry-run src/
