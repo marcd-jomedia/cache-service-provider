@@ -1,7 +1,7 @@
 # Solarium Service Provider
-[![Build Status](https://img.shields.io/travis/dafiti/solarium-service-provider/master.svg?style=flat-square)](https://travis-ci.org/dafiti/solarium-service-provider)
+[![Build Status](https://img.shields.io/travis/pcelta/cache-service-provider/master.svg?style=flat-square)](https://travis-ci.org/pcelta/cache-service-provider)
 
-A [Silex](https://github.com/silexphp/Silex) Service Provider for [Solarium](http://www.solarium-project.org).
+A [Silex](https://github.com/silexphp/Silex) Service Provider for [Doctrine Cache](https://github.com/doctrine/cache).
 
 ## Instalation
 
