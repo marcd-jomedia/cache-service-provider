@@ -18,10 +18,10 @@
   "minimum-stability": "dev",
   "require": {
     "php": ">=5.4.0",
+    "silex/silex": "~1.1",
     "doctrine/cache": "v1.4.0"
   },
   "require-dev": {
-    "silex/silex": "~1.1",
     "phpunit/phpunit": "@stable",
     "fabpot/php-cs-fixer": "@stable"
   },
