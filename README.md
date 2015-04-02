@@ -1,4 +1,4 @@
-# Solarium Service Provider
+# Cache Service Provider
 [![Build Status](https://img.shields.io/travis/dafiti/cache-service-provider/master.svg?style=flat-square)](https://travis-ci.org/dafiti/cache-service-provider)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/dafiti/cache-service-provider/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/dafiti/cache-service-provider/?branch=master)
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/dafiti/cache-service-provider/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/dafiti/cache-service-provider/?branch=master)
