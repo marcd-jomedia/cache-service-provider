@@ -1,0 +1,38 @@
+{
+  "name": "dafiti/cache-service-provider",
+  "description": "A Silex Service Provider for Doctrine Cache",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [
+    "silex",
+    "doctrine",
+    "cache",
+    "dafiti"
+  ],
+  "authors": [
+    {
+      "name": "Pedro Ribeiro da Silva Neto",
+      "email": "pedro.neto@dafiti.com.br"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.4.0",
+    "silex/silex": "~1.1",
+    "doctrine/cache": "v1.4.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "@stable",
+    "fabpot/php-cs-fixer": "@stable"
+  },
+  "autoload": {
+    "psr-4": {
+      "Dafiti\\Silex\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Dafiti\\Silex\\": "tests/"
+    }
+  }
+}
