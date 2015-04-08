@@ -19,6 +19,32 @@ A [Silex](https://github.com/silexphp/Silex) Service Provider for [Doctrine Cach
 }
 ```
 
+## Adapters Availables
+
+
+To use Memcache
+~~~
+sudo apt-get install php5-memcached
+
+~~~
+
+
+To use Memcached
+~~~
+sudo apt-get install php5-memcached
+
+~~~
+
+
+To use Redis Adapter install [PHPRedis](https://github.com/phpredis/phpredis)
+~~~
+git clone git@github.com:phpredis/phpredis.git
+cd phpredis
+phpize
+./configure
+make && make install
+~~~
+
 ## Usage
 
 ```php
