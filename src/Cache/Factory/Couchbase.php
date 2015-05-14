@@ -2,8 +2,12 @@
 
 namespace Dafiti\Silex\Cache\Factory;
 
-class Couchbase implements Factorable
+class Couchbase extends AbstractFactory
 {
+    public function getModuleName()
+    {
+    }
+
     public function create(array $params)
     {
     }

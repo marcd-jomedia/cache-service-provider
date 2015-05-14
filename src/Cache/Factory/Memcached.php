@@ -3,19 +3,19 @@
 namespace Dafiti\Silex\Cache\Factory;
 
 use Dafiti\Silex\Exception\InvalidCacheConfig;
-use Dafiti\Silex\Exception\ModuleIsNotInstalled;
 
-class Memcached implements Factorable
+class Memcached extends AbstractFactory
 {
     const MODULE_NAME = 'memcached';
 
+    public function getModuleName()
+    {
+        return self::MODULE_NAME;
+    }
+
     public function create(array $params)
     {
-        if (!extension_loaded(self::MODULE_NAME)) {
-            throw new ModuleIsNotInstalled(self::MODULE_NAME);
-        }
-
-        if (!$this->isValidatParams($params)) {
+        if (!$this->isValidParams($params)) {
             throw new InvalidCacheConfig();
         }
 
@@ -26,11 +26,11 @@ class Memcached implements Factorable
     }
 
     /**
-     * @param array $params
+     * @param array $params *
      *
      * @return bool
      */
-    private function isValidatParams(array $params)
+    private function isValidParams(array $params)
     {
         if (!isset($params['host'])) {
             return false;
