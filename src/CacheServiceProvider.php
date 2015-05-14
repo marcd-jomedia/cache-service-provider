@@ -31,7 +31,10 @@ class CacheServiceProvider implements ServiceProviderInterface
                 }
 
                 $cacheAdapter = new $cacheClassName();
-                $this->addConnection($cacheAdapter, $cacheSettings);
+
+                if ($cacheSettings['connectable'] === true) {
+                    $this->addConnection($cacheAdapter, $cacheSettings);
+                }
 
                 return $cacheAdapter;
             }
@@ -44,16 +47,8 @@ class CacheServiceProvider implements ServiceProviderInterface
      */
     private function addConnection(CacheProvider $cacheAdapter, array $cacheSettings)
     {
-        if ($cacheSettings['connectable'] === false) {
-            return;
-        }
-
-        $connectionClass = sprintf('\%s', $cacheSettings['adapter']);
-        $connection = new $connectionClass();
-
-        $host = $cacheSettings['host'];
-        $port = $cacheSettings['port'];
-        $connection->connect($host, $port);
+        $proxy = new \Dafiti\Silex\Cache\Proxy();
+        $connection = $proxy->getAdapter($cacheSettings);
 
         $setMethod = sprintf('set%s', $cacheSettings['adapter']);
         $cacheAdapter->$setMethod($connection);

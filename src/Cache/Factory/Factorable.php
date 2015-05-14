@@ -1,6 +1,6 @@
 <?php
 
-namespace Dafiti\Silex\Factory;
+namespace Dafiti\Silex\Cache\Factory;
 
 interface Factorable
 {

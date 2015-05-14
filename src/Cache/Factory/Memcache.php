@@ -1,13 +1,18 @@
 <?php
 
-namespace Dafiti\Silex\Factory;
+namespace Dafiti\Silex\Cache\Factory;
 
 use Dafiti\Silex\Exception\InvalidCacheConfig;
 use Dafiti\Silex\Exception\ModuleIsNotInstalled;
 
-class Memcache implements Factorable
+class Memcache extends AbstractFactory
 {
     const MODULE_NAME = 'memcache';
+
+    public function getModuleName()
+    {
+        return self::MODULE_NAME;
+    }
 
     /**
      * @param array $params
@@ -18,11 +23,7 @@ class Memcache implements Factorable
      */
     public function create(array $params)
     {
-        if (!extension_loaded(self::MODULE_NAME)) {
-            throw new ModuleIsNotInstalled(self::MODULE_NAME);
-        }
-
-        if (!$this->isValidatParams($params)) {
+        if (!$this->isValidParams($params)) {
             throw new InvalidCacheConfig();
         }
 
@@ -37,7 +38,7 @@ class Memcache implements Factorable
      *
      * @return bool
      */
-    private function isValidatParams(array $params)
+    private function isValidParams(array $params)
     {
         if (!isset($params['host'])) {
             return false;
