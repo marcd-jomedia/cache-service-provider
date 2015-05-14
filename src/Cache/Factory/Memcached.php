@@ -15,7 +15,7 @@ class Memcached extends AbstractFactory
 
     public function create(array $params)
     {
-        if (!$this->isValidatParams($params)) {
+        if (!$this->isValidParams($params)) {
             throw new InvalidCacheConfig();
         }
 
@@ -26,11 +26,11 @@ class Memcached extends AbstractFactory
     }
 
     /**
-     * @param array $params
+     * @param array $params *
      *
      * @return bool
      */
-    private function isValidatParams(array $params)
+    private function isValidParams(array $params)
     {
         if (!isset($params['host'])) {
             return false;

@@ -9,6 +9,12 @@ class ProxyTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetAdapterShouldReturnMemcachedInstance()
     {
+        if (!extension_loaded(Factory\Memcached::MODULE_NAME)) {
+            $this->markTestSkipped('Memcached Module Is Not Installed');
+
+            return;
+        }
+
         $proxy = new \Dafiti\Silex\Cache\Proxy();
 
         $params = [
@@ -27,6 +33,11 @@ class ProxyTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetAdapterShouldReturnMemcacheInstance()
     {
+        if (!extension_loaded(Factory\Memcache::MODULE_NAME)) {
+            $this->markTestSkipped('Memcache Module Is Not Installed');
+
+            return;
+        }
         $proxy = new \Dafiti\Silex\Cache\Proxy();
 
         $params = [
@@ -45,6 +56,12 @@ class ProxyTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetAdapterShouldReturnRedisInstance()
     {
+        if (!extension_loaded(Factory\Redis::MODULE_NAME)) {
+            $this->markTestSkipped('Redis Module Is Not Installed');
+
+            return;
+        }
+
         $proxy = new \Dafiti\Silex\Cache\Proxy();
 
         $params = [

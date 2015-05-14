@@ -15,7 +15,7 @@ abstract class AbstractFactory implements Factorable
         }
     }
 
-    protected function moduleIsInstalled()
+    public function moduleIsInstalled()
     {
         if (!extension_loaded($this->getModuleName())) {
             return false;

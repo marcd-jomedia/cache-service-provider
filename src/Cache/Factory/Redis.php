@@ -15,7 +15,7 @@ class Redis extends AbstractFactory
 
     public function create(array $params)
     {
-        if (!$this->isValidatParams($params)) {
+        if (!$this->isValidParams($params)) {
             throw new InvalidCacheConfig();
         }
 
@@ -30,7 +30,7 @@ class Redis extends AbstractFactory
      *
      * @return bool
      */
-    private function isValidatParams(array $params)
+    private function isValidParams(array $params)
     {
         if (!isset($params['host'])) {
             return false;
