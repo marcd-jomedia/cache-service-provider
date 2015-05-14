@@ -3,18 +3,18 @@
 namespace Dafiti\Silex\Cache\Factory;
 
 use Dafiti\Silex\Exception\InvalidCacheConfig;
-use Dafiti\Silex\Exception\ModuleIsNotInstalled;
 
-class Redis implements Factorable
+class Redis extends AbstractFactory
 {
     const MODULE_NAME = 'redis';
 
+    public function getModuleName()
+    {
+        return self::MODULE_NAME;
+    }
+
     public function create(array $params)
     {
-        if (!extension_loaded(self::MODULE_NAME)) {
-            throw new ModuleIsNotInstalled(self::MODULE_NAME);
-        }
-
         if (!$this->isValidatParams($params)) {
             throw new InvalidCacheConfig();
         }

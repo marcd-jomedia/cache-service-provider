@@ -27,4 +27,25 @@ class MemcachedTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('\Memcached', $result);
     }
+
+    /**
+     * @expectedException \Dafiti\Silex\Exception\ModuleIsNotInstalled
+     */
+    public function testCreateShouldThrowsModuleIsNotInstalled()
+    {
+        $factory = $this->getMockBuilder('Dafiti\Silex\Cache\Factory\Memcached')
+            ->setMethods(['moduleIsInstalled'])
+            ->getMock();
+
+        $factory->expects($this->once())
+            ->method('moduleIsInstalled')
+            ->will($this->returnValue(false));
+
+        $params = [
+            'host' => '127.0.0.1',
+            'port' => 11211,
+        ];
+
+        $factory->create($params);
+    }
 }

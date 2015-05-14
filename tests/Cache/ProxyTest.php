@@ -1,8 +1,12 @@
 <?php
 
+namespace Dafiti\Silex\Cache;
 
 class ProxyTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @covers Dafiti\Silex\Cache\Proxy::getAdapter
+     */
     public function testGetAdapterShouldReturnMemcachedInstance()
     {
         $proxy = new \Dafiti\Silex\Cache\Proxy();
@@ -18,6 +22,9 @@ class ProxyTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('\Memcached', $result);
     }
 
+    /**
+     * @covers Dafiti\Silex\Cache\Proxy::getAdapter
+     */
     public function testGetAdapterShouldReturnMemcacheInstance()
     {
         $proxy = new \Dafiti\Silex\Cache\Proxy();
@@ -33,6 +40,9 @@ class ProxyTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('\Memcache', $result);
     }
 
+    /**
+     * @covers Dafiti\Silex\Cache\Proxy::getAdapter
+     */
     public function testGetAdapterShouldReturnRedisInstance()
     {
         $proxy = new \Dafiti\Silex\Cache\Proxy();
@@ -46,5 +56,23 @@ class ProxyTest extends \PHPUnit_Framework_TestCase
 
         $result = $proxy->getAdapter($params);
         $this->assertInstanceOf('\Redis', $result);
+    }
+
+    /**
+     * @covers Dafiti\Silex\Cache\Proxy::getAdapter
+     * @expectedException \Dafiti\Silex\Exception\InvalidCacheConfig
+     */
+    public function testGetAdapterShouldThrowsInvalidCacheConfigWhenClassIsNotExists()
+    {
+        $proxy = new \Dafiti\Silex\Cache\Proxy();
+
+        $params = [
+            'adapter'     => 'Crazy',
+            'host'        => '127.0.0.1',
+            'port'        => 11211,
+            'connectable' => false,
+        ];
+
+        $proxy->getAdapter($params);
     }
 }
