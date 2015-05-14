@@ -5,7 +5,7 @@ class ProxyTest extends \PHPUnit_Framework_TestCase
 {
     public function testGetAdapterShouldReturnMemcachedInstance()
     {
-        $proxy = new \Dafiti\Silex\Factory\Proxy();
+        $proxy = new \Dafiti\Silex\Cache\Proxy();
 
         $params = [
             'adapter'     => 'Memcached',
@@ -20,7 +20,7 @@ class ProxyTest extends \PHPUnit_Framework_TestCase
 
     public function testGetAdapterShouldReturnMemcacheInstance()
     {
-        $proxy = new \Dafiti\Silex\Factory\Proxy();
+        $proxy = new \Dafiti\Silex\Cache\Proxy();
 
         $params = [
             'adapter'     => 'Memcache',
@@ -35,7 +35,7 @@ class ProxyTest extends \PHPUnit_Framework_TestCase
 
     public function testGetAdapterShouldReturnRedisInstance()
     {
-        $proxy = new \Dafiti\Silex\Factory\Proxy();
+        $proxy = new \Dafiti\Silex\Cache\Proxy();
 
         $params = [
             'adapter'     => 'Redis',

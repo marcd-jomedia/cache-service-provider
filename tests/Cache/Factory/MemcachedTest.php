@@ -1,6 +1,6 @@
 <?php
 
-use Dafiti\Silex\Factory\Memcached;
+use Dafiti\Silex\Cache\Factory\Memcached;
 
 class MemcachedTest extends \PHPUnit_Framework_TestCase
 {

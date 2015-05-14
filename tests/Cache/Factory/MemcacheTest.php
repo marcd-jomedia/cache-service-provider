@@ -1,6 +1,6 @@
 <?php
 
-use Dafiti\Silex\Factory\Memcache;
+use Dafiti\Silex\Cache\Factory\Memcache;
 
 class MemcacheTest extends \PHPUnit_Framework_TestCase
 {
@@ -11,7 +11,7 @@ class MemcacheTest extends \PHPUnit_Framework_TestCase
     {
         $params = [];
 
-        $factory = new \Dafiti\Silex\Factory\Memcache();
+        $factory = new \Dafiti\Silex\Cache\Factory\Memcache();
         $factory->create($params);
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-use Dafiti\Silex\Factory\Redis;
+use Dafiti\Silex\Cache\Factory\Redis;
 
 class RedisTest extends \PHPUnit_Framework_TestCase
 {
