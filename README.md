@@ -52,22 +52,41 @@ make && make install
 use Silex\Application;
 use Dafiti\Silex\CacheServiceProvider;
 
-$app = new Application();
-$app['config'] = [
-    'cache' => [
-        'adapter'       => 'Memcache',
+$app->register(new CacheServiceProvider(), array(
+    'cache.options' => array(
+        'adapter'       => 'Memcached',
         'host'          => '127.0.0.1',
         'port'          => 11211,
         'connectable'   => true // If not need of one connection put FALSE
-    ]
-];
-
-$app->register(new CacheServiceProvider());
+    ),
+));
 
 $app['cache']->save('your-key', 'your-data');
 $data = $app['cache']->fetch('your-key');
-
 echo $data; // your-data
+
+or using mitiple cache system:
+
+$app->register(new CacheServiceProvider(), array(
+    'caches.options' => array(
+        'memcached' => array(
+            'adapter'       => 'Memcached',
+            'host'          => '127.0.0.1',
+            'port'          => 11211,
+            'connectable'   => true, // If not need of one connection put FALSE
+        ),
+        'redis' => array(
+            'adapter' => 'redis',
+            'host' => 127.0.0.1,
+            'port' => 6379,
+            'connectable'   => true, // If not need of one connection put FALSE
+        ),
+    ),
+));
+
+The first registered connection is the default and can simply be accessed as you would if there was only one connection. Given the above configuration, these two lines are equivalent:
+$app['cache']->fetch('your-key');
+$app['caches']['memcache']->fetch('your-key');
 
 ```
 
