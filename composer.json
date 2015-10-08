@@ -1,5 +1,5 @@
 {
-  "name": "dafiti/cache-service-provider",
+  "name": "marcd-jomedia/cache-service-provider",
   "description": "A Silex Service Provider for Doctrine Cache",
   "type": "library",
   "license": "MIT",
@@ -13,6 +13,10 @@
     {
       "name": "Pedro Ribeiro da Silva Neto",
       "email": "pedro.neto@dafiti.com.br"
+    },
+    {
+      "name": "Marc Drolet",
+      "email": "droletmarc@gmail.com"
     }
   ],
   "minimum-stability": "dev",
